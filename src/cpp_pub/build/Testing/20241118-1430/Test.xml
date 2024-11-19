@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20241118-1430-Experimental"
+	Name="simon-virtual-machine"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/aarch64-linux-gnu-g++"
+	CompilerVersion="11.4.0"
+	OSName="Linux"
+	Hostname="simon-virtual-machine"
+	OSRelease="6.8.0-48-generic"
+	OSVersion="#48~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  7 11:49:53 UTC 2"
+	OSPlatform="aarch64"
+	Is64Bits="1"
+	VendorString=""
+	VendorID="Unknown Manufacturer"
+	FamilyID="8"
+	ModelID="0"
+	ProcessorCacheSize="0"
+	NumberOfLogicalCPU="6"
+	NumberOfPhysicalCPU="1"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="9920"
+	LogicalProcessorsPerPhysical="6"
+	ProcessorClockFrequency="0"
+	>
+	<Testing>
+		<StartDateTime>Nov 18 15:30 CET</StartDateTime>
+		<StartTestTime>1731940217</StartTestTime>
+		<TestList/>
+		<EndDateTime>Nov 18 15:30 CET</EndDateTime>
+		<EndTestTime>1731940217</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

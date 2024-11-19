@@ -1,0 +1,13 @@
+# ROS 2 build, install, and log directories
+/build/
+/install/
+/log/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE-specific files
+.vscode/
+*.swp
