@@ -1,0 +1,10 @@
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/uninstall.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/cpp_pub_uninstall.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/talker.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/test.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/edit_cache.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/rebuild_cache.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/list_install_components.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/install.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/install/local.dir
+/home/simon/ros2_ws/src/cpp_pub/build/CMakeFiles/install/strip.dir
