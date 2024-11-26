@@ -39,14 +39,14 @@ Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus d
 
 #### Publisher starten
   ```bash
-  ros2 run timing_tubaf_cpp publisher_member_function
+  ros2 run cpp_pub publisher
   ```
 
 #### Subscriber starten
 In einem neuen Terminal:
 ```bash
 source ~/ros2_ws/install/local_setup.bash
-ros2 run timing_tubaf_py subscriber_member_function
+ros2 run py_sub subscriber
 ```
 
 #### Funktionalität testen
