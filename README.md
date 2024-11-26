@@ -39,7 +39,7 @@ Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus d
   - Pakete mit `colcon` bauen:
     ```bash
     colcon build
-    ``
+    ```
 
 #### Publisher starten
   ```bash
