@@ -42,7 +42,7 @@ Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus d
 
 #### Publisher starten
   ```bash
-  source ~/ros2/install/setup.bash
+  source ~/ros2_ws/install/setup.bash
   ros2 run cpp_pub publisher
   ```
 
