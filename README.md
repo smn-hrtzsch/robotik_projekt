@@ -43,14 +43,15 @@ Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus d
 
 #### Publisher starten
   ```bash
-  cd ros2_ws/src
+  source install/setup.bash
   ros2 run cpp_pub publisher
   ```
 
 #### Subscriber starten
 In einem neuen Terminal:
 ```bash
-source ~/ros2_ws/install/local_setup.bash
+cd ~/ros2_ws
+source install/setup.bash
 ros2 run py_sub subscriber
 ```
 
@@ -60,6 +61,7 @@ In einem neuen Terminal:
   ```bash
   ros2 topic echo /number
   ```
+In einem neuen Terminal:
 - Zeitdifferenzen des Subscribers überprüfen:
   ```bash
   ros2 topic echo /diff
