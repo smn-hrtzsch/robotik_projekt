@@ -1,6 +1,6 @@
 # Robotik Projekt 2024/25
 
-Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus dem Modul **Robotik Projekt**. Implementiert werden ROS2-Packages in C++ und Python. 
+Dieses Repository enthält die Lösung für die Übungs- und Belegaufgaben aus dem Modul **Robotik Projekt**. Implementiert werden ROS2-Packages in C++ und Python. 
 
 ---
 
