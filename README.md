@@ -43,15 +43,14 @@ Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus d
 
 #### Publisher starten
   ```bash
-  source install/setup.bash
+  source ~/ros2/install/setup.bash
   ros2 run cpp_pub publisher
   ```
 
 #### Subscriber starten
 In einem neuen Terminal:
 ```bash
-cd ~/ros2_ws
-source install/setup.bash
+source ~/ros2_ws/install/setup.bash
 ros2 run py_sub subscriber
 ```
 
