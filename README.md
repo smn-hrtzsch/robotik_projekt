@@ -36,9 +36,14 @@ Dieses Repository enthält die Lösung für die Übungs- und Belegaufhaben aus d
     ```bash
     sudo apt install python3-colcon-common-extensions
     ```
+  - Pakete mit `colcon` bauen:
+    ```bash
+    colcon build
+    ``
 
 #### Publisher starten
   ```bash
+  cd ros2_ws/src
   ros2 run cpp_pub publisher
   ```
 
