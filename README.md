@@ -67,4 +67,52 @@ In einem neuen Terminal:
 
 ---
 
-## Aufgabe 2
+## Aufgabe 2 Hindernisverfolgung mittels Laserscanner (Python)
+
+### Funktionalität
+- Implementiert eine ROS2-Node, die den nächsten Hindernissen innerhalb eines einstellbaren Bereichs folgt.
+- **Features:**
+  - Hindernisse werden im konfigurierbaren Winkelbereich und Abstand erkannt.
+  - Der Roboter stoppt, wenn er zu nahe an ein Hindernis herankommt.
+  - Der Roboter verfolgt Hindernisse in vorgegebenen Abständen und lenkt entsprechend, um ihnen zu folgen.
+
+### Parameter
+Die Hindernisverfolgung unterstützt mehrere konfigurierbare Parameter, die zur Laufzeit geändert werden können:
+- **`distance_to_stop`**: Minimale Entfernung zum Hindernis, bei der der Roboter stoppt (Standard: `0.3 m`).
+- **`distance_to_follow`**: Maximale Entfernung, innerhalb derer der Roboter einem Hindernis folgt (Standard: `1.0 m`).
+- **`speed_linear`**: Maximale Vorwärtsgeschwindigkeit des Roboters (Standard: `0.15 m/s`).
+- **`speed_angular`**: Maximale Drehgeschwindigkeit des Roboters (Standard: `0.5 rad/s`).
+- **`scan_angle_range`**: Winkelbereich (in Grad), in dem Hindernisse erkannt werden (Standard: `90°`).
+
+### Nutzung
+
+#### Vorbereitung
+1. **Abhängigkeiten installieren**:
+   Die Vorbereitung ist identisch mit Aufgabe 1. Die Schritte zur Einrichtung des Workspaces und des Repositories bleiben gleich.
+
+2. **Node kompilieren und starten**:
+   ```bash
+   source ~/ros2_ws/install/setup.bash
+   ros2 run <package_name> follow_obstacle
+   ```
+
+#### Parameter ändern
+Die Parameter können während der Laufzeit über die ROS2 CLI geändert werden. Beispiel:
+```bash
+ros2 param set /follow_obstacle scan_angle_range 120
+ros2 param set /follow_obstacle distance_to_stop 0.5
+```
+
+### Funktionalität testen
+1. **Laserscandaten visualisieren**:
+   ```bash
+   ros2 topic echo /scan
+   ```
+
+2. **Bewegungsbefehle überprüfen**:
+   ```bash
+   ros2 topic echo /cmd_vel
+   ```
+
+---
+
