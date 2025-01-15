@@ -69,7 +69,7 @@ In einem neuen Terminal:
 
 ## Aufgabe 2 Hindernisverfolgung mittels Laserscanner (Python)
 
-### Funktionalität
+### Funktionalität ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/following_obstacle/following_obstacle/laserscanner.py))
 - Implementiert eine ROS2-Node, die den nächsten Hindernissen innerhalb eines einstellbaren Bereichs folgt.
 - **Features:**
   - Hindernisse werden im konfigurierbaren Winkelbereich und Abstand erkannt.
@@ -93,13 +93,14 @@ Die Hindernisverfolgung unterstützt mehrere konfigurierbare Parameter, die zur 
 2. **Node kompilieren und starten**:
    ```bash
    source ~/ros2_ws/install/setup.bash
-   ros2 run <package_name> follow_obstacle
+   ros2 run following_obstacle follow_obstacle
    ```
 
 #### Parameter ändern
-Die Parameter können während der Laufzeit über die ROS2 CLI geändert werden. Beispiel:
+Die Parameter können während der Laufzeit über die ROS2 CLI geändert werden.
+Dazu kann man ein neues Terminal öffnen und dann mit folgenden Befehlen arbeiten:
 ```bash
-ros2 param set /follow_obstacle scan_angle_range 120
+ros2 param set /follow_obstacle scan_angle_range 60
 ros2 param set /follow_obstacle distance_to_stop 0.5
 ```
 
