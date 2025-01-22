@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>line_follower_bo</name>
+  <version>0.1.0</version>
+  <description>Package für Linienverfolgung zwischen Hindernissen</description>
+
+  <maintainer email="Simon.Hoertzsch@student.tu-freiberg.de">Simon Hörtzsch</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Abhängigkeiten -->
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>cv_bridge</depend>
+
+  <!-- Test-Abhängigkeiten -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <!-- Export -->
+  <export>
+    <build_type>ament_python</build_type>
+    <launch>
+      <launch_file>line_follower_bo_launch.py</launch_file>
+    </launch>
+  </export>
+</package>
