@@ -12,8 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        # Launch-Dateien hinzufügen
-        (os.path.join('share', package_name, 'launch'), glob('line_follower/launch/*.py')),
+        ('share/' + package_name + '/launch', ['launch/line_follower_launch.py']),  # Launch-File hinzufügen
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -25,7 +24,8 @@ setup(
     entry_points={
         'console_scripts': [
             # Hier die Python-Node registrieren
-            'line_follower = line_follower.line_follower:main',
+            'line_follower = line_follower.line_follower:main', # Haupt-Node
+            'stop = line_follower.stop:main', # Stop-Node
         ],
     },
 )
