@@ -120,13 +120,13 @@ ros2 param set /follow_obstacle distance_to_stop 0.5
 ## Aufgabe 3: Linienverfolgung mittels Kamera (Python)
 
 ### Funktionalität
-- **Focused Line Follower Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower/line_follower.py)):
+- **Focused Line Follower Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower/line_follower/line_follower.py)):
   - Verarbeitet Live-Bilddaten von einer Kamera, um eine weiße Linie auf dem Boden zu erkennen und zu verfolgen.
   - Berechnet die Position der Linie im Bild und passt die Bewegungsbefehle des Roboters an, um der Linie zu folgen.
   - Verwendet OpenCV für Bildverarbeitung und ROS2 für die Kommunikation.
   - Debug-Ansichten der Bildverarbeitung (Graustufen- und binarisiertes Bild) können in OpenCV angezeigt werden.
 
-- **Stop Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower/stop.py)):
+- **Stop Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower/line_follower/stop.py)):
   - Sendet mehrfach Bewegungsbefehle, um den Roboter sicher zu stoppen.
   - Ermöglicht ein koordiniertes Herunterfahren nach einem Keyboard-Interrupt.
 
@@ -139,19 +139,53 @@ Die Node unterstützt mehrere Parameter, die zur Laufzeit angepasst werden könn
 ### Nutzung
 
 #### Vorbereitung
+
 Die Vorbereitung ist identisch mit Aufgabe 1. Die Schritte zur Einrichtung des Workspaces und des Repositories bleiben gleich.
 
+Um die Kamerabilder anzeigen zu lassen, während die Node läuft, müssen folgende Pakete und Abhängigkeiten installiert sein:
+
+1. OpenCV und Abhängigkeiten installieren:
+
+   Unter Ubuntu (ROS2 Humble empfohlen):
+   ```bash
+   sudo apt update
+   sudo apt install python3-opencv libopencv-dev
+   ```
+
+3. GUI-Unterstützung sicherstellen:
+
+   Je nach verwendetem GUI-Backend sollte eines der folgenden Pakete installiert werden:
+   ```bash
+   sudo apt install libqt5gui5  # Qt als Backend
+   ```
+   oder
+   ```bash
+   sudo apt install libgtk-3-dev  # GTK als Backend
+   ```
+
+3. Python-Abhängigkeiten mit `pip` installieren:
+
+   Falls `cv_bridge` oder andere ROS-spezifische Python-Pakete fehlen:
+   ```bash
+   pip install opencv-python opencv-contrib-python
+   pip install cv-bridge
+   ```
+
+4. Zusätzliche ROS-Pakete:
+
+   Für die volle Integration von `cv_bridge` in ROS2:
+   ```bash
+   sudo apt install ros-humble-cv-bridge
+   ```
+
 #### Nodes starten
-1. **Focused Line Follower Node ausführen**:
-   ```bash
-   source ~/ros2_ws/install/setup.bash
-   ros2 run line_follower line_follower
-   ```
-2. **Stop Node ausführen** (zum sicheren Anhalten des Roboters):
-   ```bash
-   source ~/ros2_ws/install/setup.bash
-   ros2 run line_follower stop
-   ```
+
+Die Nodes können über das bereitgestellte Launch-File gemeinsam gestartet werden:
+
+```bash
+source ~/ros2_ws/install/setup.bash
+ros2 launch line_follower line_follower_launch.py
+```
 
 #### Parameter ändern
 Die Parameter können während der Laufzeit über die ROS2 CLI angepasst werden. 
@@ -172,4 +206,66 @@ ros2 param set /focused_line_follower speed_drive 0.2
 
 ---
 
+# Aufgabe 4: Linienverfolgung zwischen zwei Hindernissen (Python)
 
+### Funktionalität
+
+- **Handle Obstacle Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower_bo/line_follower_bo/handle_obstacle.py)):
+
+  - Erkennt Hindernisse mit einem Laserscanner und stoppt den Roboter, wenn ein Hindernis erkannt wird.
+  - Führt Drehbewegungen durch, um Hindernisse zu umgehen, und ermöglicht eine sichere Fortsetzung der Linienverfolgung.
+  - Arbeitet mit dem State Manager zusammen, um Zustände wie "ROTATE" oder "FOLLOW_LINE" zu verwalten.
+
+- **Line Follower Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower_bo/line_follower_bo/line_follower.py)):
+
+  - komplett gleiche Funktionalität wie in Aufgabe 3
+
+- **State Manager** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower_bo/state_manager.py)):
+
+  - Verarbeitet und verwaltet die Zustände des Roboters, wie "FOLLOW_LINE" oder "ROTATE".
+  - Leitet Bewegungsbefehle entsprechend des aktuellen Zustands weiter.
+
+### Parameter der Handle Obstacle Node
+
+- **`distance_to_stop`**: Minimaler Abstand zum Hindernis, bei dem der Roboter anhält (Standard: `0.3 m`).
+- **`rotate_speed`**: Drehgeschwindigkeit während der 180° Drehung am Hindernis (Standard: `0.75 rad/s`).
+- **`scan_angle_range`**: Winkelbereich für die Hinderniserkennung (Standard: `30°`).
+
+### Nutzung
+
+#### Vorbereitung
+
+Die Vorbereitung ist identisch mit Aufgabe 1. Die Schritte zur Einrichtung des Workspaces und des Repositories bleiben gleich.
+
+Um die Kamerabilder anzeigen zu lassen, während die Node läuft, müssen gewisse Pakete und Abhängigkeiten installiert sein, siehe Vorbereitung Aufgabe 3.
+
+#### Nodes starten
+
+Die Nodes können über das bereitgestellte Launch-File gemeinsam gestartet werden:
+
+```bash
+source ~/ros2_ws/install/setup.bash
+ros2 launch line_follower_bo line_follower_bo_launch.py
+```
+
+#### Parameter ändern
+
+Die Parameter können während der Laufzeit über die ROS2 CLI angepasst werden:
+
+```bash
+ros2 param set /handle_obstacle distance_to_stop 0.5
+ros2 param set /handle_obstacle rotate_speed 1.0
+```
+
+#### Funktionalität testen
+
+1. **Hindernisdaten prüfen**:
+   - Veröffentlicht auf dem Topic `/scan`:
+     ```bash
+     ros2 topic echo /scan
+     ```
+2. **Bewegungsbefehle prüfen**:
+   - Veröffentlicht auf dem Topic `/cmd_vel`:
+     ```bash
+     ros2 topic echo /cmd_vel
+     ```
