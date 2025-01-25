@@ -220,7 +220,7 @@ ros2 param set /focused_line_follower speed_drive 0.2
 
   - komplett gleiche Funktionalität wie in Aufgabe 3
 
-- **State Manager** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower_bo/state_manager.py)):
+- **State Manager** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower_bo/line_follower_bo/state_manager.py)):
 
   - Verarbeitet und verwaltet die Zustände des Roboters, wie "FOLLOW_LINE" oder "ROTATE".
   - Leitet Bewegungsbefehle entsprechend des aktuellen Zustands weiter.
