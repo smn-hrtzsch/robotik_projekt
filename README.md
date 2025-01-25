@@ -117,3 +117,59 @@ ros2 param set /follow_obstacle distance_to_stop 0.5
 
 ---
 
+## Aufgabe 3: Linienverfolgung mittels Kamera (Python)
+
+### Funktionalität
+- **Focused Line Follower Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower/line_follower.py)):
+  - Verarbeitet Live-Bilddaten von einer Kamera, um eine weiße Linie auf dem Boden zu erkennen und zu verfolgen.
+  - Berechnet die Position der Linie im Bild und passt die Bewegungsbefehle des Roboters an, um der Linie zu folgen.
+  - Verwendet OpenCV für Bildverarbeitung und ROS2 für die Kommunikation.
+  - Debug-Ansichten der Bildverarbeitung (Graustufen- und binarisiertes Bild) können in OpenCV angezeigt werden.
+
+- **Stop Node** ([Code ansehen](https://github.com/smn-hrtzsch/robotik_projekt/blob/main/src/line_follower/stop.py)):
+  - Sendet mehrfach Bewegungsbefehle, um den Roboter sicher zu stoppen.
+  - Ermöglicht ein koordiniertes Herunterfahren nach einem Keyboard-Interrupt.
+
+### Parameter der Focused Line Follower Node
+Die Node unterstützt mehrere Parameter, die zur Laufzeit angepasst werden können:
+- **`speed_drive`**: Maximale Geschwindigkeit für Geradeausfahren (Standard: `0.1 m/s`).
+- **`speed_turn`**: Maximale Geschwindigkeit für Drehbewegungen (Standard: `0.2 rad/s`).
+- **`threshold`**: Schwellenwert für die Binarisierung des Bildes (Standard: `150`).
+
+### Nutzung
+
+#### Vorbereitung
+Die Vorbereitung ist identisch mit Aufgabe 1. Die Schritte zur Einrichtung des Workspaces und des Repositories bleiben gleich.
+
+#### Nodes starten
+1. **Focused Line Follower Node ausführen**:
+   ```bash
+   source ~/ros2_ws/install/setup.bash
+   ros2 run line_follower line_follower
+   ```
+2. **Stop Node ausführen** (zum sicheren Anhalten des Roboters):
+   ```bash
+   source ~/ros2_ws/install/setup.bash
+   ros2 run line_follower stop
+   ```
+
+#### Parameter ändern
+Die Parameter können während der Laufzeit über die ROS2 CLI angepasst werden. 
+Dazu kann man ein neues Terminal öffnen und dann mit folgenden Befehlen arbeiten:
+```bash
+ros2 param set /focused_line_follower threshold 160
+ros2 param set /focused_line_follower speed_drive 0.2
+```
+
+#### Funktionalität testen
+1. **Debug-Ansichten der Bildverarbeitung**:
+   - Während die Node läuft, werden Graustufenbilder und binarisierte Bilder in OpenCV-Fenstern angezeigt.
+2. **Bewegungsbefehle prüfen**:
+   - Veröffentlicht auf dem Topic `/cmd_vel`:
+     ```bash
+     ros2 topic echo /cmd_vel
+     ```
+
+---
+
+
