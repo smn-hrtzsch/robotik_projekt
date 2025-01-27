@@ -15,7 +15,7 @@ class FocusedLineFollowerNode(Node):
 
         self.declare_parameter('speed_drive', 0.1)
         self.declare_parameter('speed_turn', 0.2)
-        self.declare_parameter('threshold', 160)
+        self.declare_parameter('threshold', 180)
 
         self.bridge = CvBridge()
         self.line_position = None
