@@ -13,7 +13,7 @@ class FocusedLineFollowerNode(Node):
         # Parameter deklarieren, die während der Laufzeit angepasst werden können
         self.declare_parameter('speed_drive', 0.1)  # Geschwindigkeit für Geradeausfahren
         self.declare_parameter('speed_turn', 0.2)  # Geschwindigkeit für Drehungen
-        self.declare_parameter('threshold', 150)  # Schwellenwert für die Bildbinarisierung
+        self.declare_parameter('threshold', 180)  # Schwellenwert für die Bildbinarisierung
 
         self.bridge = CvBridge()  # Brücke zwischen ROS-Bilddaten und OpenCV
         self.line_position = None  # Aktuelle Position der Linie (wenn erkannt)
