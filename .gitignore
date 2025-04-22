@@ -1,13 +1,40 @@
-# ROS 2 build, install, and log directories
-/build/
-/install/
-/log/
+# ROS 2 Build and Install folders
+build/
+install/
+log/
 
-# Python compiled files
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
 
-# IDE-specific files
+# CMake and colcon metadata
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+ament_cmake_environment_hooks/
+.colcon_install_layout
+
+# ROS-specific files
+*.launch.py~
+*.launch~
+*.rviz
+*.db
+
+# VSCode config (optional)
 .vscode/
-*.swp
+
+# JetBrains IDEs
+.idea/
+
+# macOS
+.DS_Store
+
+# Python virtual environments (optional)
+venv/
+.env/
+
+# Eclipse (optional)
+.project
+.cproject

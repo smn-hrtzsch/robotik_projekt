@@ -1,0 +1,3 @@
+[submodule "src/waymo"]
+	path = src/waymo
+	url = https://github.com/Bigfire3/waymo
