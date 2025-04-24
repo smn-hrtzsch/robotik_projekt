@@ -1,3 +1,6 @@
 [submodule "src/waymo"]
 	path = src/waymo
 	url = https://github.com/Bigfire3/waymo
+[submodule "src/turtlebot3"]
+	path = src/turtlebot3
+	url = https://github.com/ROBOTIS-GIT/turtlebot3.git
